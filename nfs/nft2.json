@@ -1,0 +1,11 @@
+{
+    "name": "NFT 2",
+    "description": "Esta é a primeira NFT da minha coleção.",
+    "image": "ipfs://QmUfSApQkYU86SoZecNmzYxTZw4vvo5rhTNbdM6vCLv3wL",
+    "attributes": [
+      {
+        "trait_type": "Raridade",
+        "value": "Épico"
+      }
+    ]
+  }
