@@ -17,6 +17,56 @@ const nftCollectionAddress = "0x7C2808C1a0f86fEDD7d7D748a59084A13C98d7d5"; // Su
 const feeRecipient = "0x8C8c6f5E856195CB1601F94B5ae4159C7e929903"; // Endereço da carteira que recebe as taxas
 const gameFee = ethers.utils.parseUnits("0.5", 18); // 0.5 HMAX (taxa do jogo)
 
+async function switchToSepolia(){
+    if(window.ethereum){
+        try{
+            //tentar mudar para rede sepolia
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{chainId: '0xaa36a7'}],
+            });
+            console.log('Mudou para rede Sepolia');
+        }catch(error){
+            //se a rede nao estiver configurada, tentar adicionar automaticamente
+            if (error.code === 4902) {
+                try{
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [{
+                            chainId: '0xaa36a7',
+                            chainName: 'Ethereum Sepolia',
+                            nativeCurrency:{
+                                name:'SepoliaETH',
+                                symbol:'ETH',
+                                decimals:18,
+                                },
+                                rpcUrls:['https://sepolia.org'],
+                                blockExplorerUrls:['https://sepolia.etherscan.io'],
+                        }],
+                    });
+                    console.log("Rede Sepolia adicionada com Sucesso e conectada")
+                    }catch(error){
+                        console.error("Erro ao adicionar rede Sepolia", addError);
+                        }
+                    }else
+                        {
+                            console.error("Erro ao mudar para rede Sepolia", error);
+                        }
+                        }
+                    }else
+                        {
+                            alert("Metamask nao encontrada, instale a extensao e tente novamente")
+                        }
+
+                            
+        
+            
+        
+    
+}
+window.onload = switchToSepolia;
+
+
 // Função para conectar a carteira
 async function connectWallet() {
     try {

@@ -143,7 +143,6 @@ button:hover {
   55%, 100% { transform: translateX(-50%); }
 }
 
-
 .claimTokens {
     display: flex; /* Usar flexbox para alinhamento */
     flex-direction: column; /* Colocar os elementos em coluna */
